@@ -124,7 +124,7 @@ class FeatureTests(TestCase):
         self.assertIn(
             str(task.due_date.year),
             html.inner_text(),
-            msg="Did not find the task start date in the detail page",
+            msg="Did not find the task due date in the detail page",
         )
 
     def test_project_detail_with_a_tasks_shows_assignee(self):
@@ -147,7 +147,7 @@ class FeatureTests(TestCase):
         self.assertIn(
             self.noor.username,
             html.inner_text(),
-            msg="Did not find the task start date in the detail page",
+            msg="Did not find the task assignee in the detail page",
         )
 
     def test_project_detail_with_a_tasks_shows_is_completed(self):
