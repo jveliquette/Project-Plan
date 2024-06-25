@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Signup - Tracker
+{% endblock title %}
+
+{% block content %}
+    <div>
+        <h1>Signup</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Signup</button>
+        </form>
+    </div>
+{% endblock content %}
