@@ -4,10 +4,10 @@
     Tracker
 {% endblock title %}
 {% block content %}
-    <div>
+    <div class="project-list">
         <h1>My Projects</h1>
         <p>
-            <a href="{% url 'create_project' %}">Create a new project</a>
+            <a class="main-link" href="{% url 'create_project' %}">Create a new project</a>
         </p>
         {% if project_list|length == 0 %}
             <p>You are not assigned to any projects</p>
@@ -22,8 +22,8 @@
                 <tbody>
                     {% for project in project_list %}
                         <tr>
-                            <td>
-                                <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
+                            <td class="link-item">
+                                <a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a>
                             </td>
                             <td>{{ project.tasks.all|length }}</td>
                         </tr>

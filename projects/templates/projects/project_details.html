@@ -4,12 +4,12 @@
     Details - Tracker
 {% endblock title %}
 {% block content %}
-    <div>
+    <div class="project-detail">
         <h1>{{ project.name }}</h1>
         <p>{{ project.description }}</p>
         <h2>Tasks</h2>
         <p>
-            <a href="{% url 'create_task' %}">Create a new task</a>
+            <a class="main-link" href="{% url 'create_task' %}">Create a new task</a>
         </p>
         {% if tasks|length == 0 %}
             <p>This project has no tasks</p>

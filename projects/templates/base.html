@@ -5,6 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
         <title>
             {% block title %}
             {% endblock title %}
@@ -12,24 +13,27 @@
     </head>
     <body>
         <header>
-            <nav>
-                <ul>
+            <div class="logo-container">
+                <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="400">
+            </div>
+            <nav class="navbar">
+                <ul class="nav-list">
                     {% if user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'show_my_tasks' %}">My tasks</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'show_my_tasks' %}">My tasks</a>
                         </li>
-                        <li>
-                            <a href="{% url 'list_projects' %}">My projects</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'list_projects' %}">My projects</a>
                         </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Logout</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
-                        <li>
-                            <a href="{% url 'login' %}">Login</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
-                        <li>
-                            <a href="{% url 'signup' %}">Signup</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
                         </li>
                     {% endif %}
                 </ul>

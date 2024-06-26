@@ -1,0 +1,257 @@
+/* GENERAL */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
+}
+
+main {
+    color: white;
+}
+
+
+/* HEADER */
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    background-color: #011324;
+    margin-top: -5rem;
+}
+
+/* NAV */
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5rem;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    margin-bottom: 2rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+}
+
+.nav-item {
+    display: inline;
+    margin: 0 1em;
+    padding: 1em 0 1em 0;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    transition: background-color 200ms ease-in, color 200ms ease-in;
+}
+
+.nav-link:hover {
+    background-color: #AFC1D0;
+    color: #0B1320;
+    border-radius: 4px;
+}
+
+/* VIEW STYLING */
+
+.my-tasks-list, .project-list, .project-detail {
+    background-color: #1b2126;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
+    margin: 1rem;
+    max-width: 800px;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.my-tasks-list h1, .project-list h1, .project-detail h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.link:hover {
+    /* background-color: #AFC1D0; */
+}
+
+.main-link {
+    background-color: #111518;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    border-radius: 4px;
+    transition: background-color 200ms ease-in, color 200ms ease-in;
+}
+
+.main-link:hover {
+    background-color: #2e3942;
+    border-radius: 4px;
+}
+
+/* TABLES */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+table th {
+    background-color: #111518;
+    padding: 0.75rem;
+}
+
+table td {
+    background-color: #252e35;
+    padding: 0.75rem;
+}
+
+table tbody tr td:hover {
+    background-color: #2e3942;
+}
+
+.my-tasks-list thead tr th, .project-list thead tr th, .project-detail thead tr th {
+    border-bottom: 2px solid #DEDEDE;
+}
+
+
+.my-tasks-list tbody td:nth-child(2),
+.my-tasks-list tbody td:nth-child(3),
+.my-tasks-list tbody td:nth-child(4),
+.project-list tbody tr td,
+.project-detail tbody td:nth-child(2),
+.project-detail tbody td:nth-child(3),
+.project-detail tbody td:nth-child(4),
+.project-detail tbody td:nth-child(5) {
+    text-align: center;
+}
+
+.my-tasks-list tbody :not(tr:last-child) td,
+.project-list tbody :not(tr:last-child) td,
+.project-detail tbody :not(tr:last-child) td {
+    border-bottom: 1px solid #DEDEDE;
+}
+
+
+/* FORMS */
+
+input {
+    height: 1.5em;
+    margin: 0;
+    padding: .25em .5em;
+}
+
+select {
+    height: 2.5em;
+}
+
+select[multiple] {
+    height: 7.5em;
+}
+
+textarea {
+    margin: 0;
+    padding: .25em .5em;
+}
+
+.helptext {
+    display: block;
+    font-size: 80%;
+}
+
+.login-form, .signup-form {
+    background-color: #1b2126;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
+    margin: 1rem;
+    max-width: 400px;
+    padding: 2.5rem;
+}
+
+.task-form, .project-form {
+    background-color: #1b2126;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
+    margin: 1rem;
+    max-width: 600px;
+    padding: 2.5rem;
+}
+
+.task-form h1, .login-form h1, .signup-form h1, .project-form h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Add spacing to the section of the project detail */
+.project-detail h2 {
+    margin-top: 2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+.task-form p, .login-form p, .signup-form p, .project-form p {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 100px 1fr;
+}
+
+/* Standardize help text positions in the grid */
+.task-form p .helptext, .login-form p .helptext, .signup-form p .helptext, .project-form p .helptext {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+/* Make the buttons a little larger */
+button {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 200ms ease-in, color 200ms ease-in, border 200ms ease-in;
+}
+
+button:hover {
+    background-color: #011324;
+    color: white;
+    border: 2px solid white;
+}
