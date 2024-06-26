@@ -12,6 +12,7 @@
         </title>
     </head>
     <body>
+        <div class="wrapper">
         <header>
             <div class="logo-container">
                 <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="400">
@@ -43,5 +44,12 @@
             {% block content %}
             {% endblock content %}
         </main>
+        <footer>
+            <div class="footer-logo-container">
+                <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="150">
+            </div>
+            <p class="footer-p">Created by<br>Julia Veliquette</p>
+        </footer>
+        </div>
     </body>
 </html>
