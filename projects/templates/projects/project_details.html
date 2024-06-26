@@ -3,13 +3,14 @@
 {% block title %}
     Details - Tracker
 {% endblock title %}
-
 {% block content %}
     <div>
         <h1>{{ project.name }}</h1>
         <p>{{ project.description }}</p>
         <h2>Tasks</h2>
-        <p><a href="{% url 'create_task' %}">Create a new task</a></p>
+        <p>
+            <a href="{% url 'create_task' %}">Create a new task</a>
+        </p>
         {% if tasks|length == 0 %}
             <p>This project has no tasks</p>
         {% else %}
@@ -25,13 +26,13 @@
                 </thead>
                 <tbody>
                     {% for task in tasks %}
-                    <tr>
-                        <td>{{ task.name }}</td>
-                        <td>{{ task.assignee }}</td>
-                        <td>{{ task.start_date }}</td>
-                        <td>{{ task.due_date }}</td>
-                        <td>{{ task.is_completed|yesno }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ task.name }}</td>
+                            <td>{{ task.assignee }}</td>
+                            <td>{{ task.start_date }}</td>
+                            <td>{{ task.due_date }}</td>
+                            <td>{{ task.is_completed|yesno }}</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>

@@ -5,6 +5,7 @@ from tasks.models import Task
 
 # Create your views here.
 
+
 @login_required
 def create_task(request):
     if request.method == "POST":
@@ -18,6 +19,7 @@ def create_task(request):
         "form": form,
     }
     return render(request, "tasks/create_task.html", context)
+
 
 @login_required
 def show_my_tasks(request):

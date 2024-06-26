@@ -4,6 +4,7 @@ from projects.models import Project
 from tasks.models import Task
 from projects.forms import CreateProjectForm
 
+
 # Create your views here.
 @login_required
 def list_projects(request):
@@ -12,6 +13,7 @@ def list_projects(request):
         "project_list": project_list,
     }
     return render(request, "projects/list_projects.html", context)
+
 
 @login_required
 def show_project(request, id):
@@ -22,6 +24,7 @@ def show_project(request, id):
         "tasks": tasks,
     }
     return render(request, "projects/project_details.html", context)
+
 
 @login_required
 def create_project(request):
