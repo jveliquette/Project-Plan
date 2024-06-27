@@ -17,3 +17,4 @@ class CreateProjectForm(ModelForm):
 
 class ProjectSearchForm(forms.Form):
     company = forms.ModelChoiceField(queryset=Company.objects.all(), required=True)
+

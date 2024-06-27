@@ -56,3 +56,12 @@ def search_projects(request):
         "projects": projects,
     }
     return render(request, "projects/search_projects.html", context)
+
+
+@login_required
+def company_list(request):
+    companies = Company.objects.all()
+    context = {
+        "companies": companies,
+    }
+    return render(request, "projects/company_list.html", context)

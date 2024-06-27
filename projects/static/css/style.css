@@ -99,7 +99,7 @@ header {
 
 /* VIEW STYLING */
 
-.my-tasks-list, .project-list, .project-detail, .task-detail {
+.my-tasks-list, .project-list, .project-detail, .task-detail, .company-list {
     background-color: #1b2126;
     border-radius: 4px;
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
@@ -207,7 +207,7 @@ table tbody tr td:hover {
     background-color: #2e3942;
 }
 
-.my-tasks-list thead tr th, .project-list thead tr th, .project-detail thead tr th {
+.my-tasks-list thead tr th, .project-list thead tr th, .project-detail thead tr th, .company-list thead tr th {
     border-bottom: 2px solid #DEDEDE;
 }
 
@@ -219,13 +219,16 @@ table tbody tr td:hover {
 .project-detail tbody td:nth-child(2),
 .project-detail tbody td:nth-child(3),
 .project-detail tbody td:nth-child(4),
-.project-detail tbody td:nth-child(5) {
+.project-detail tbody td:nth-child(5),
+.company-list tbody td:nth-child(2),
+.company-list tbody td:nth-child(3) {
     text-align: center;
 }
 
 .my-tasks-list tbody :not(tr:last-child) td,
 .project-list tbody :not(tr:last-child) td,
-.project-detail tbody :not(tr:last-child) td {
+.project-detail tbody :not(tr:last-child) td,
+.company-list tbody :not(tr:last-child) td {
     border-bottom: 1px solid #DEDEDE;
 }
 

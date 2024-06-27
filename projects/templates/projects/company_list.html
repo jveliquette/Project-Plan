@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Company List - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="company-list">
+        <h1>Company List</h1>
+        <p><a class="main-link" href="">Add new company</a></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in companies %}
+                    <tr>
+                        <td>{{ company.name }}</td>
+                        <td>{{ company.address }}</td>
+                    {% if website %}
+                        <td><a class="link" href="{{ company.website }}" target="_blank">{{ company.website }}</a></td>
+                    {% else %}
+                        <td>None</td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
