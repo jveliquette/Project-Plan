@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ company.name }} - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="edit-company-form">
+        <h1>Edit Company</h1>
+        <h3>{{ company.name }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+{% endblock content %}

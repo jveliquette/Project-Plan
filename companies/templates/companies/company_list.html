@@ -17,9 +17,9 @@
             <tbody>
                 {% for company in companies %}
                     <tr>
-                        <td>{{ company.name }}</td>
+                        <td><a class="link" href="{% url 'edit_company' company.id %}">{{ company.name }}</a></td>
                         <td>{{ company.address }}</td>
-                    {% if website %}
+                    {% if company.website %}
                         <td><a class="link" href="{{ company.website }}" target="_blank">{{ company.website }}</a></td>
                     {% else %}
                         <td>None</td>

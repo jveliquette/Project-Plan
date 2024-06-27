@@ -1,5 +1,5 @@
 from django.contrib import admin
-from projects.models import Project, Company
+from projects.models import Project
 
 
 # Register your models here.
@@ -9,12 +9,4 @@ class ProjectAdmin(admin.ModelAdmin):
         "name",
         "description",
         "owner",
-    ]
-
-@admin.register(Company)
-class CompanyAdmin(admin.ModelAdmin):
-    list_display = [
-        "name",
-        "address",
-        "website",
     ]
