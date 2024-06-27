@@ -273,7 +273,7 @@ textarea {
     padding: 2.5rem;
 }
 
-.task-form, .project-form, .add-notes-form, .search-projects-form {
+.task-form, .project-form, .add-notes-form, .search-projects-form, .add-company-form {
     background-color: #1b2126;
     border-radius: 4px;
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
@@ -282,7 +282,7 @@ textarea {
     padding: 2.5rem;
 }
 
-.task-form h1, .login-form h1, .signup-form h1, .project-form h1, .add-notes-form h1, .search-projects-form h1 {
+.task-form h1, .login-form h1, .signup-form h1, .project-form h1, .add-notes-form h1, .search-projects-form h1, .add-company-form h1{
     margin-top: 0;
     text-align: center;
 }
@@ -297,13 +297,13 @@ form {
     gap: 0.5rem;
 }
 
-.task-form p, .login-form p, .signup-form p, .project-form p, .add-notes-form p, .add-notes-form p a, .search-projects-form p {
+.task-form p, .login-form p, .signup-form p, .project-form p, .add-notes-form p, .add-notes-form p a, .search-projects-form p, .add-company-form p {
     display: grid;
     align-items: center;
     grid-template-columns: 100px 1fr;
 }
 
-.task-form p .helptext, .login-form p .helptext, .signup-form p .helptext, .project-form p .helptext, .add-notes-form p .helptext, .search-projects-form .helptext p {
+.task-form p .helptext, .login-form p .helptext, .signup-form p .helptext, .project-form p .helptext, .add-notes-form p .helptext, .search-projects-form .helptext p, .add-company-form .helptext p {
     grid-column-start: 2;
     grid-column-end: 3;
   }
@@ -324,6 +324,21 @@ button:hover {
     background-color: #011324;
     color: white;
     border: 2px solid white;
+}
+
+.main-link {
+    background-color: #111518;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    border-radius: 4px;
+    transition: background-color 200ms ease-in, color 200ms ease-in;
+}
+
+.main-link:hover {
+    background-color: #2e3942;
+    border-radius: 4px;
 }
 
 

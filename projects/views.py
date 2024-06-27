@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from projects.models import Project, Company
 from tasks.models import Task
-from projects.forms import CreateProjectForm, ProjectSearchForm
+from projects.forms import CreateProjectForm, ProjectSearchForm, CompanyForm
 
 
 # Create your views here.
@@ -65,3 +65,17 @@ def company_list(request):
         "companies": companies,
     }
     return render(request, "projects/company_list.html", context)
+
+@login_required
+def add_company(request):
+    if request.method == "POST":
+        form = CompanyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("company_list")
+    else:
+        form = CompanyForm()
+    context = {
+        "form": form,
+    }
+    return render(request, "projects/add_company.html", context)

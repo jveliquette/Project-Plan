@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Add Company - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="add-company-form">
+        <h1>Add Company</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Save Company</button>
+        </form>
+    </div>
+    <p style="margin-bottom: 2rem;"><a class="main-link" href="{% url 'company_list' %}">Back to Company List</a></p>
+{% endblock content %}
