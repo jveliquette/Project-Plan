@@ -4,8 +4,8 @@
 
 {% block content %}
     <div class="edit-company-form">
-        <h1>Edit Company</h1>
-        <h3>{{ company.name }}</h3>
+        <h1>Edit Company<br>Information</h1>
+        <h3 style="margin-top: -1rem;">{{ company.name }}</h3>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}

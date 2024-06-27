@@ -11,6 +11,7 @@
             <p><strong><em>Is Completed:</em></strong> {{ task.is_completed|yesno }}</p>
             <p><strong><em>Notes:</em></strong> {{ task.notes }}</p>
         </div>
-        <p><a class="main-link" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
+        <p style="margin-bottom: 2rem;"><a class="main-link" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
+        <p><a class="main-link" href="{% url 'edit_task' task.id %}">Edit Task</a></p>
     </div>
 {% endblock content %}

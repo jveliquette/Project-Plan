@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ task.name }} - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="edit-task-form">
+        <h1>Edit Task: {{ task.name }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Save Changes</button>
+        </form>
+    </div>
+{% endblock content %}
