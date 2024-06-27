@@ -13,3 +13,10 @@ class CreateTaskForm(ModelForm):
             "project",
             "assignee",
         ]
+
+class TaskNotesForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = [
+            "notes",
+        ]

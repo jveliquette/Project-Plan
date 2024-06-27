@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ task.name }} Details - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="task-detail">
+        <h1>Task: {{ task.name }}</h1>
+        <div class="task-detail-list">
+            <p><strong><em>Start Date:</em></strong> {{ task.start_date }}</p>
+            <p><strong><em>Due Date:</em></strong> {{ task.due_date }}</p>
+            <p><strong><em>Is Completed:</em></strong> {{ task.is_completed|yesno }}</p>
+            <p><strong><em>Notes:</em></strong> {{ task.notes }}</p>
+        </div>
+        <p><a class="main-link" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
+    </div>
+{% endblock content %}

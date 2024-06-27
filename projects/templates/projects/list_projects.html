@@ -6,9 +6,8 @@
 {% block content %}
     <div class="project-list">
         <h1>My Projects</h1>
-        <p>
-            <a class="main-link" href="{% url 'create_project' %}">Create a new project</a>
-        </p>
+        <p class="project-list-link"><a class="main-link" href="{% url 'search_projects' %}">Search for projects by company</a></p>
+        <p><a class="main-link" href="{% url 'create_project' %}">Create a new project</a></p>
         {% if project_list|length == 0 %}
             <p>You are not assigned to any projects</p>
         {% else %}

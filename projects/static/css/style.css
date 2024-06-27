@@ -99,7 +99,7 @@ header {
 
 /* VIEW STYLING */
 
-.my-tasks-list, .project-list, .project-detail {
+.my-tasks-list, .project-list, .project-detail, .task-detail {
     background-color: #1b2126;
     border-radius: 4px;
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
@@ -109,12 +109,16 @@ header {
     text-align: center;
 }
 
-.project-list {
+.project-list, .task-detail-list {
     max-width: 100%;
     width: 500px;
 }
 
-.my-tasks-list h1, .project-list h1, .project-detail h1 {
+.task-detail-list{
+    text-align: left;
+}
+
+.my-tasks-list h1, .project-list h1, .project-detail h1, .task-detail h1{
     text-align: center;
     margin-bottom: 1.5rem;
     margin-top: 0;
@@ -145,6 +149,10 @@ header {
 .main-link:hover {
     background-color: #2e3942;
     border-radius: 4px;
+}
+
+.project-list-link {
+    margin-bottom: 2rem;
 }
 
 /* TABLES */
@@ -231,7 +239,7 @@ textarea {
     padding: 2.5rem;
 }
 
-.task-form, .project-form {
+.task-form, .project-form, .add-notes-form, .search-projects-form {
     background-color: #1b2126;
     border-radius: 4px;
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
@@ -240,7 +248,7 @@ textarea {
     padding: 2.5rem;
 }
 
-.task-form h1, .login-form h1, .signup-form h1, .project-form h1 {
+.task-form h1, .login-form h1, .signup-form h1, .project-form h1, .add-notes-form h1, .search-projects-form h1 {
     margin-top: 0;
     text-align: center;
 }
@@ -255,13 +263,13 @@ form {
     gap: 0.5rem;
 }
 
-.task-form p, .login-form p, .signup-form p, .project-form p {
+.task-form p, .login-form p, .signup-form p, .project-form p, .add-notes-form p, .add-notes-form p a, .search-projects-form p {
     display: grid;
     align-items: center;
     grid-template-columns: 100px 1fr;
 }
 
-.task-form p .helptext, .login-form p .helptext, .signup-form p .helptext, .project-form p .helptext {
+.task-form p .helptext, .login-form p .helptext, .signup-form p .helptext, .project-form p .helptext, .add-notes-form p .helptext, .search-projects-form .helptext p {
     grid-column-start: 2;
     grid-column-end: 3;
   }

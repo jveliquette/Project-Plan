@@ -11,6 +11,7 @@ class CreateProjectForm(ModelForm):
             "name",
             "description",
             "owner",
+            "company",
         ]
 
 
