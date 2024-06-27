@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from projects.models import Project
+from projects.models import Project, Company
 from tasks.models import Task
-from projects.forms import CreateProjectForm
+from projects.forms import CreateProjectForm, ProjectSearchForm
 
 
 # Create your views here.
@@ -41,3 +41,18 @@ def create_project(request):
         "form": form,
     }
     return render(request, "projects/create_project.html", context)
+
+
+def search_projects(request):
+    form = ProjectSearchForm()
+    projects = None
+    if "company" in request.GET:
+        form = ProjectSearchForm(request.GET)
+        if form.is_valid():
+            company = form.cleaned_data['company']
+            projects = Project.objects.filter(company=company)
+    context = {
+        "form": form,
+        "projects": projects,
+    }
+    return render(request, "projects/search_projects.html", context)

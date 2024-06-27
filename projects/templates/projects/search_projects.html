@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Search Projects - Project Plan{% endblock title %}
+
+{% block content %}
+    <div>
+        <h1>Search Projects</h1>
+        <form method="GET">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Search</button>
+        </form>
+        {% if projects %}
+            <h2>Projects</h2>
+            <ul>
+                {% for project in projects %}
+                    <li>{{ project.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock content %}

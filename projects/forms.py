@@ -1,5 +1,6 @@
 from django.forms import ModelForm
-from projects.models import Project
+from django import forms
+from projects.models import Project, Company
 
 
 class CreateProjectForm(ModelForm):
@@ -11,3 +12,7 @@ class CreateProjectForm(ModelForm):
             "description",
             "owner",
         ]
+
+
+class ProjectSearchForm(forms.Form):
+    company = forms.ModelChoiceField(queryset=Company.objects.all(), required=True)
