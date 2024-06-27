@@ -9,9 +9,7 @@
         <p>Company: {{ project.company|default:"Not specified" }}</p>
         <p>Description: {{ project.description }}</p>
         <h2>Tasks</h2>
-        <p>
-            <a class="main-link" href="{% url 'create_task' %}">Create a new task</a>
-        </p>
+        <p><a class="main-link" href="{% url 'create_task' %}">Create a new task</a></p>
         {% if tasks|length == 0 %}
             <p>This project has no tasks</p>
         {% else %}

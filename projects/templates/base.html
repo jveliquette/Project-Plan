@@ -15,27 +15,17 @@
         <div class="wrapper">
         <header>
             <div class="logo-container">
-                <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="400">
+                <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="300">
             </div>
             <nav class="navbar">
                 <ul class="nav-list">
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'show_my_tasks' %}">My tasks</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'list_projects' %}">My projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'show_my_tasks' %}">My tasks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'list_projects' %}">My projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
                     {% endif %}
                 </ul>
             </nav>

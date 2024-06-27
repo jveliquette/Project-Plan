@@ -35,6 +35,7 @@ main {
     width: 100%;
     max-width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -50,7 +51,6 @@ header {
     background-color: #011324;
     margin-top: -5rem;
     padding-top: 1rem;
-    padding-bottom: 1rem;
 }
 
 /* NAV */
@@ -109,19 +109,50 @@ header {
     text-align: center;
 }
 
+.search-projects-results {
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+    width: 100%;
+    max-width: 300px;
+
+}
+
+.search-projects-results h2 {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.302);
+    justify-content: center;
+}
+
+.search-projects-results ul {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.search-projects-results li {
+    list-style: none;
+    text-align: center;
+}
+
 .project-list, .task-detail-list {
     max-width: 100%;
     width: 500px;
 }
 
-.task-detail-list{
+.task-detail-list {
     text-align: left;
+    margin-left: 2rem;
 }
 
-.my-tasks-list h1, .project-list h1, .project-detail h1, .task-detail h1{
+.my-tasks-list h1, .project-list h1, .project-detail h1, .task-detail h1, .search-projects-form h1, .search-projects-form h3{
     text-align: center;
     margin-bottom: 1.5rem;
     margin-top: 0;
+}
+
+.search-projects-form h3 {
+    margin-top: -1.25rem;
 }
 
 .link {
