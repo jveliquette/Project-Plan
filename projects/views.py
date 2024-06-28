@@ -68,3 +68,16 @@ def delete_project(request, project_id):
         "project": project,
     }
     return render(request, "projects/delete_project.html", context)
+
+@login_required
+def delete_task_from_project_list(request, project_id, task_id):
+    project = get_object_or_404(Project, id=project_id)
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == "POST":
+        task.delete()
+        return redirect("show_project", id=project_id)
+    context = {
+        "project": project,
+        "task": task,
+    }
+    return render(request, "projects/delete_task.html", context)

@@ -6,6 +6,6 @@ urlpatterns = [
     path("mine/", show_my_tasks, name="show_my_tasks"),
     path("<int:task_id>/", task_detail, name="task_detail"),
     path("<int:task_id>/add-notes/", add_notes, name="add_notes"),
-    path("<int:task_id>edit-task", edit_task, name="edit_task"),
+    path("<int:task_id>/edit-task/", edit_task, name="edit_task"),
     path("<int:task_id>/delete/", delete_task, name="delete_task")
 ]
