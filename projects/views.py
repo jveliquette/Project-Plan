@@ -56,3 +56,15 @@ def search_projects(request):
         "projects": projects,
     }
     return render(request, "projects/search_projects.html", context)
+
+
+@login_required
+def delete_project(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    if request.method == "POST":
+        project.delete()
+        return redirect("list_projects")
+    context = {
+        "project": project,
+    }
+    return render(request, "projects/delete_project.html", context)

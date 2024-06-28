@@ -24,7 +24,7 @@
                         <tr>
                             <td class="link-item"><a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
                             <td>{{ project.tasks.all|length }}</td>
-                            <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="{% url 'delete_project' project.id %}"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
