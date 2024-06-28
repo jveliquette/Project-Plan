@@ -41,3 +41,14 @@ def edit_company(request, company_id):
         "company": company,
     }
     return render(request, "companies/edit_company.html", context)
+
+@login_required
+def delete_company(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    if request.method == "POST":
+        company.delete()
+        return redirect("company_list")
+    context = {
+        "company": company,
+    }
+    return render(request, "companies/delete_company.html", context)

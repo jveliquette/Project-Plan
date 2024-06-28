@@ -11,6 +11,7 @@ class CreateTaskForm(ModelForm):
             "name",
             "start_date",
             "due_date",
+            "is_completed",
             "project",
             "assignee",
         ]
