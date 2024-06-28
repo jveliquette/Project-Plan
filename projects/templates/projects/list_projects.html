@@ -16,6 +16,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Number of tasks</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,7 @@
                         <tr>
                             <td class="link-item"><a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
                             <td>{{ project.tasks.all|length }}</td>
+                            <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

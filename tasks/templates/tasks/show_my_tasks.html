@@ -16,6 +16,7 @@
                         <th>Start date</th>
                         <th>Due date</th>
                         <th>Is completed</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,7 @@
                             <td>{{ task.start_date }}</td>
                             <td>{{ task.due_date }}</td>
                             <td>{{ task.is_completed|yesno }}</td>
+                            <td><a href="{% url 'delete_task' task.id %}"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -207,6 +207,16 @@ table tbody tr td:hover {
     background-color: #2e3942;
 }
 
+td a i {
+    color: white;
+    transition: color 200ms ease-in;
+}
+
+td a i:hover {
+    color: #819cb8;
+
+}
+
 .my-tasks-list thead tr th, .project-list thead tr th, .project-detail thead tr th, .company-list thead tr th {
     border-bottom: 2px solid #DEDEDE;
 }
@@ -252,6 +262,10 @@ select[multiple] {
     border: 4px solid #3c454e;
 }
 
+input[type="datetime-local"] {
+    font-family: "Roboto", sans-serif;
+}
+
 textarea {
     margin: 0;
     padding: .25rem .5rem;
@@ -273,7 +287,7 @@ textarea {
     padding: 2.5rem;
 }
 
-.task-form, .project-form, .add-notes-form, .search-projects-form, .add-company-form, .edit-company-form, .edit-task-form {
+.task-form, .project-form, .add-notes-form, .search-projects-form, .add-company-form, .edit-company-form, .edit-task-form, .delete-task {
     background-color: #1b2126;
     border-radius: 4px;
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.5);
@@ -282,7 +296,7 @@ textarea {
     padding: 2.5rem;
 }
 
-.task-form h1, .login-form h1, .signup-form h1, .project-form h1, .add-notes-form h1, .search-projects-form h1, .add-company-form h1, .edit-company-form h1, .edit-company-form h3, .edit-task-form h1 {
+.task-form h1, .login-form h1, .signup-form h1, .project-form h1, .add-notes-form h1, .search-projects-form h1, .add-company-form h1, .edit-company-form h1, .edit-company-form h3, .edit-task-form h1, .delete-task h1, .delete-task p {
     margin-top: 0;
     text-align: center;
 }
@@ -301,6 +315,10 @@ form {
     display: grid;
     align-items: center;
     grid-template-columns: 100px 1fr;
+}
+
+.delete-task p {
+    align-items: center;
 }
 
 .task-form p .helptext, .login-form p .helptext, .signup-form p .helptext, .project-form p .helptext, .add-notes-form p .helptext, .search-projects-form .helptext p, .add-company-form .helptext p, .edit-company-form .helptext p, .edit-task-form .helptext p {

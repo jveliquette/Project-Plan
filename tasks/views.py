@@ -70,3 +70,15 @@ def edit_task(request, task_id):
         "task": task,
     }
     return render(request, "tasks/edit_task.html", context)
+
+
+@login_required
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == "POST":
+        task.delete()
+        return redirect("show_my_tasks")
+    context = {
+        "task": task,
+    }
+    return render(request, "tasks/delete_task.html", context)
