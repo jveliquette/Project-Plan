@@ -11,7 +11,6 @@ class CreateTaskForm(ModelForm):
             "name",
             "start_date",
             "due_date",
-            "is_completed",
             "project",
             "assignee",
         ]
@@ -26,3 +25,19 @@ class TaskNotesForm(ModelForm):
         fields = [
             "notes",
         ]
+
+class EditTaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = [
+            "name",
+            "start_date",
+            "due_date",
+            "project",
+            "assignee",
+            "is_completed",
+        ]
+        widgets = {
+            "start_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
+            "due_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        }
