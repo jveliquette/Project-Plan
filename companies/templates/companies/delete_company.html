@@ -3,12 +3,17 @@
 {% block title %}Delete Company - Project Plan{% endblock title %}
 
 {% block content %}
-    <div class="delete-task">
-        <h1>Delete Company</h1>
+    <div class="box">
+        <h1 class="title">Delete Company</h1>
         <p>Are you sure you want to delete the company "{{ company.name }}"?</p>
         <form method="POST">
             {% csrf_token %}
-            <button>Yes, delete</button>
-            <p style="margin-top: 1rem;"><a class="main-link" href="{% url 'company_list' %}">Cancel</a></p>
+            <div class="control">
+                <button class="button is-danger">Yes, delete</button>
+            </div>
+            <div class="control">
+                <p class="mt-4"><a class="button is-link" href="{% url 'company_list' %}">Cancel</a></p>
+            </div>
+        </form>
     </div>
 {% endblock content %}

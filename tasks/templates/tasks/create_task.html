@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}
-    Create task - Tracker
-{% endblock title %}
+{% block title %}Create task - Tracker{% endblock title %}
+
 {% block content %}
-    <div class="task-form">
-        <h1>Create a new task</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button>Create</button>
-        </form>
+    <div class="box">
+        <h1 class="title">Create a new task</h1>
+        <div class="create-task-form">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock content %}

@@ -4,16 +4,18 @@
     {{ project.name }} - Project Plan
 {% endblock title %}
 {% block content %}
-    <div class="project-detail">
-        <h1>{{ project.name }}</h1>
-        <p>Company: {{ project.company|default:"Not specified" }}</p>
-        <p>Description: {{ project.description }}</p>
-        <h2>Tasks</h2>
-        <p><a class="main-link" href="{% url 'create_task' %}">Create a new task</a></p>
+    <div class="box">
+        <h1 class="title">{{ project.name }}</h1>
+        <p class="content"><strong>Company:</strong> {{ project.company|default:"Not specified" }}</p>
+        <p class="content"><strong>Description:</strong> {{ project.description }}</p>
+        <h2 class="subtitle has-text-black"><strong>Tasks</strong></h2>
+        <div class="buttons">
+            <a class="button is-primary" href="{% url 'create_task' %}">Create a new task</a></p>
+        </div>
         {% if tasks|length == 0 %}
             <p>This project has no tasks</p>
         {% else %}
-            <table>
+            <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -21,18 +23,27 @@
                         <th>Start date</th>
                         <th>Due date</th>
                         <th>Is completed</th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for task in tasks %}
                         <tr>
                             <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
-                            <td>{{ task.assignee }}</td>
-                            <td>{{ task.start_date }}</td>
-                            <td>{{ task.due_date }}</td>
-                            <td>{{ task.is_completed|yesno }}</td>
-                            <td><a href="{% url 'delete_task_from_project_list' project.id task.id %}"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><p class="has-text-primary-00">{{ task.assignee }}</p></td>
+                            <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
+                            <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
+                            <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>
+                            <td>
+                                <div class="buttons">
+                                    <a class="button is-danger is-small" href="{% url 'delete_task_from_project_list' project.id task.id %}">
+                                        <span>Delete</span>
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -10,41 +10,56 @@
         <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
         <title>
             {% block title %}
             {% endblock title %}
         </title>
     </head>
-    <body>
-        <div class="wrapper">
+    <body class="has-navbar-dark">
         <header>
-            <div class="logo-container">
-                <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="300">
-            </div>
-            <nav class="navbar">
-                <ul class="nav-list">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'show_my_tasks' %}">My tasks</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'list_projects' %}">My projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'company_list' %}">Companies</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                    {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
-                    {% endif %}
-                </ul>
+            <nav class="navbar is_dark" role="navigation" aria-label="main-navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="{% url 'list_projects' %}">
+                            <figure class="image is-128x64">
+                                <img src="{% static "images/project-plan.png" %}" alt="project plan logo">
+                            </figure>
+                        </a>
+                        <div class="navbar-menu">
+                            <div class="navbar-start">
+                                {% if user.is_authenticated %}
+                                    <a class="navbar-item" href="{% url 'show_my_tasks' %}">My tasks</a>
+                                    <a class="navbar-item" href="{% url 'list_projects' %}">My projects</a>
+                                    <a class="navbar-item" href="{% url 'company_list' %}">Companies</a>
+                                    <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+                                {% else %}
+                                    <a class="navbar-item" href="{% url 'login' %}">Login</a>
+                                    <a class="navbar-item" href="{% url 'signup' %}">Signup</a>
+                                {% endif %}
+                            </div>
+                        </div
+                    </div>
+                </div>
             </nav>
         </header>
-        <main>
-            {% block content %}
-            {% endblock content %}
-        </main>
-        <footer>
-            <div class="footer-logo-container">
-                <img src="{% static "images/project-plan.png" %}" alt="project plan logo" height="150">
+
+        <main class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
             </div>
-            <p class="footer-p">Created by<br>Julia Veliquette</p>
+        </main>
+        
+        <footer class="footer">
+            <div class="content has-text-centered">
+                {% comment %} <img src="{% static "images/project-plan.png" %}" alt="project plan logo"> {% endcomment %}
+                <p>Created by<br>Julia Veliquette</p>
+            </div>
         </footer>
-        </div>
     </body>
 </html>

@@ -3,23 +3,25 @@
 {% block title %}Search Projects - Project Plan{% endblock title %}
 
 {% block content %}
-    <div class="search-projects-form">
-        <h1>Search Projects</h1>
-        <h3>By Company</h3>
-        <form method="GET">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button>Search</button>
-        </form>
+    <div class="box">
+        <div class="search-form">
+            <h1 class="title">Search for projects by company</h1>
+            <form method="GET">
+                {{ form.as_p }}
+                <button class="button is-primary">Search</button>
+            </form>
+        </div>
     </div>
-    <div class="search-projects-results">
+
+    <div class="box">
         {% if projects %}
-            <h2>Projects</h2>
-            <ul>
+            <h2 class="title">Projects</h2>
+            <ul class="content">
                 {% for project in projects %}
-                    <li><a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a></li>
+                    <li><a class="has-text-primary" href="{% url 'show_project' project.id %}">{{ project.name }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
     </div>
+
 {% endblock content %}

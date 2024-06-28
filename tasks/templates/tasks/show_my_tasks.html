@@ -1,32 +1,39 @@
 {% extends "base.html" %}
 
-{% block title %}
-    My Tasks - Project Plan
-{% endblock title %}
+{% block title %}My Tasks - Project Plan{% endblock title %}
 {% block content %}
-    <div class="my-tasks-list">
-        <h1>My Tasks</h1>
+    <div class="box">
+        <h1 class="title">My Tasks</h1>
         {% if my_tasks|length == 0 %}
             <p>You have no tasks</p>
         {% else %}
-            <table>
+            <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Start date</th>
                         <th>Due date</th>
                         <th>Is completed</th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for task in my_tasks %}
                         <tr>
                             <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
-                            <td>{{ task.start_date }}</td>
-                            <td>{{ task.due_date }}</td>
-                            <td>{{ task.is_completed|yesno }}</td>
-                            <td><a href="{% url 'delete_task' task.id %}"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
+                            <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
+                            <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>
+                            <td>
+                                <div class="buttons">
+                                    <a class="button is-danger is-small" href="{% url 'delete_task' task.id %}">
+                                        <span>Delete</span>
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>

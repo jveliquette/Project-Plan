@@ -4,27 +4,38 @@
     My Projects - Project Plan
 {% endblock title %}
 {% block content %}
-    <div class="project-list">
-        <h1>My Projects</h1>
-        <p class="project-list-link"><a class="main-link" href="{% url 'search_projects' %}">Search for projects by company</a></p>
-        <p><a class="main-link" href="{% url 'create_project' %}">Create a new project</a></p>
+    <div class="box">
+        <h1 class="title">My Projects</h1>
+        <div class="buttons">
+            <a class="button is-primary" href="{% url 'search_projects' %}">Search for projects by company</a>
+            <a class="button is-link" href="{% url 'create_project' %}">Create a new project</a>
+        </div>
         {% if project_list|length == 0 %}
             <p>You are not assigned to any projects</p>
         {% else %}
-            <table>
+            <table class="table is-fullwidth is-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Number of tasks</th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for project in project_list %}
                         <tr>
-                            <td class="link-item"><a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
-                            <td>{{ project.tasks.all|length }}</td>
-                            <td><a href="{% url 'delete_project' project.id %}"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
+                            <td><p class="has-text-primary-00">{{ project.tasks.all|length }}</p></td>
+                            <td>
+                                <div class="buttons">
+                                    <a class="button is-danger is-small" href="{% url 'delete_project' project.id %}">
+                                        <span>Delete</span>
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>

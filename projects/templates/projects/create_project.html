@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}
-    Create Project - Project Plan
-{% endblock title %}
+{% block title %}Create Project - Project Plan{% endblock title %}
+
 {% block content %}
-    <div class="project-form">
-        <h1>Create a new project</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button>Create</button>
-        </form>
+    <div class="box">
+        <h1 class="title">Create a new project</h1>
+        <div class="project-form">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock content %}
