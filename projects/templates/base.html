@@ -18,15 +18,21 @@
     </head>
     <body class="has-navbar-dark">
         <header>
-            <nav class="navbar is_dark" role="navigation" aria-label="main-navigation">
+            <nav class="navbar is-centered is-dark">
+                <figure class="image is-2by2">
+                    <img src="{% static "images/project-plan.png" %}" alt="project plan logo">
+                </figure>
+            </nav>
+            <nav class="navbar is-dark" role="navigation" aria-label="main-navigation">
                 <div class="container">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="{% url 'list_projects' %}">
-                            <figure class="image is-128x64">
-                                <img src="{% static "images/project-plan.png" %}" alt="project plan logo">
-                            </figure>
-                        </a>
-                        <div class="navbar-menu">
+                        <div class="navbar-burger" data-target="navMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                        <div id="navMenu" class="navbar-menu">
                             <div class="navbar-start">
                                 {% if user.is_authenticated %}
                                     <a class="navbar-item" href="{% url 'show_my_tasks' %}">My tasks</a>
@@ -54,7 +60,7 @@
                 </div>
             </div>
         </main>
-        
+
         <footer class="footer">
             <div class="content has-text-centered">
                 {% comment %} <img src="{% static "images/project-plan.png" %}" alt="project plan logo"> {% endcomment %}
