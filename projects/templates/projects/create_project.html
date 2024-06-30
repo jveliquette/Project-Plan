@@ -3,18 +3,54 @@
 {% block title %}Create Project - Project Plan{% endblock title %}
 
 {% block content %}
-    <div class="box">
-        <h1 class="title">Create a new project</h1>
-        <div class="project-form">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-primary" type="submit">Create</button>
-                    </div>
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box">
+                <h1 class="title">Create a new project</h1>
+                <div class="project-form">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label class="label" for="{{ form.name.id_for_label }}">Name:</label>
+                            <div class="control">
+                                {{ form.name }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.description.id_for_label }}">Description:</label>
+                            <div class="control">
+                                {{ form.description }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.owner.id_for_label }}">Owner:</label>
+                            <div class="control">
+                                {{ form.owner }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.company.id_for_label }}">Company:</label>
+                            <div class="control">
+                                {{ form.company }}
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped mt-5">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">Create</button>
+                            </div>
+                            <div class="control">
+                                <a class="button is-link is-light" href="{% url 'list_projects' %}" type="button">Cancel</a>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 {% endblock content %}

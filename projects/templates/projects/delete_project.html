@@ -3,17 +3,23 @@
 {% block title %}Delete Project - Project Plan{% endblock title %}
 
 {% block content %}
-    <div class="box">
-        <h1 class="title">Delete Project</h1>
-        <p>Are you sure you want to delete the project "{{ project.name }}"?</p>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="control">
-                <button class="button is-danger">Yes, delete</button>
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box">
+                <h1 class="title">Delete Project</h1>
+                <p>Are you sure you want to delete the project "{{ project.name }}"?</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="field is-grouped mt-5">
+                        <div class="control">
+                            <button class="button is-danger" type="submit">Yes, delete</button>
+                        </div>
+                        <div class="control">
+                            <a class="button is-link is-light" href="{% url 'list_projects' %}">No, cancel</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="control">
-                <p class="mt-4"><a class="button is-link" href="{% url 'list_projects' %}">Cancel</a></p>
-            </div>
-        </form>
+        </div>
     </div>
 {% endblock content %}

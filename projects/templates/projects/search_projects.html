@@ -4,11 +4,23 @@
 
 {% block content %}
     <div class="box">
+        <h1 class="title">Search for projects by company</h1>
         <div class="search-form">
-            <h1 class="title">Search for projects by company</h1>
             <form method="GET">
-                {{ form.as_p }}
-                <button class="button is-primary">Search</button>
+                <div class="field">
+                    <label class="label" for="{{ form.company.id_for_label }}">Company:</label>
+                    <div class="control">
+                        {{ form.company }}
+                    </div>
+                </div>
+                <div class="field is-grouped mt-5">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Search</button>
+                    </div>
+                    <div class="control">
+                        <a class="button is-link is-light" href="{% url 'list_projects' %}">Cancel</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

@@ -3,20 +3,25 @@
 {% block title %}{{ task.name }} Details - Project Plan{% endblock title %}
 
 {% block content %}
-    <div class="box">
-        <h1 class="title">Task: {{ task.name }}</h1>
-        <div class="task-detail-list">
-            <p><strong><em>Start Date:</em></strong> {{ task.start_date }}</p>
-            <p><strong><em>Due Date:</em></strong> {{ task.due_date }}</p>
-            <p><strong><em>Is Completed:</em></strong> {{ task.is_completed|yesno }}</p>
-            <p><strong><em>Notes:</em></strong> {{ task.notes }}</p>
-        </div>
-        <div class="field is-grouped">
-            <div class="control">
-                <p class="mb-4"><a class="button is-primary" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box">
+                <h1 class="title">Task: {{ task.name }}</h1>
+                <div class="task-detail-list">
+                    <p class="mb-2"><strong><em>Start Date:</em></strong> {{ task.start_date }}</p>
+                    <p class="mb-2"><strong><em>Due Date:</em></strong> {{ task.due_date }}</p>
+                    <p class="mb-2"><strong><em>Is Completed:</em></strong> {{ task.is_completed|yesno }}</p>
+                    <p><strong><em>Notes:</em></strong> {{ task.notes }}</p>
+                </div>
+                <div class="field is-grouped mt-5">
+                    <div class="control">
+                        <a class="button is-primary" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
+                    </div>
+                    <div class="control">
+                        <a class="button is-link" href="{% url 'edit_task' task.id %}">Edit Task</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="control">
-                <p class="mb-4"><a class="button is-link" href="{% url 'edit_task' task.id %}">Edit Task</a></p>
-            </div>
         </div>
+    </div>
 {% endblock content %}

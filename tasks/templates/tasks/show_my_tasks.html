@@ -4,6 +4,9 @@
 {% block content %}
     <div class="box">
         <h1 class="title">My Tasks</h1>
+        <div class="buttons">
+            <a class="button is-primary" href="{% url 'create_task' %}">Create a new task</a>
+        </div>
         {% if my_tasks|length == 0 %}
             <p>You have no tasks</p>
         {% else %}
