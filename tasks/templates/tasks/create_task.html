@@ -3,57 +3,61 @@
 {% block title %}Create task - Tracker{% endblock title %}
 
 {% block content %}
-    <div class="box">
-        <h1 class="title">Create a new task</h1>
-        <div class="create-task-form">
-            <form method="POST">
-                {% csrf_token %}
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box">
+                <h1 class="title">Create a new task</h1>
+                <div class="create-task-form">
+                    <form method="POST">
+                        {% csrf_token %}
 
-                <div class="field">
-                    <label class="label" for="{{ form.name.id_for_label }}">Name:</label>
-                    <div class="control">
-                        {{ form.name }}
-                    </div>
+                        <div class="field">
+                            <label class="label" for="{{ form.name.id_for_label }}">Name:</label>
+                            <div class="control">
+                                {{ form.name }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.start_date.id_for_label }}">Start Date:</label>
+                            <div class="control">
+                                {{ form.start_date }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.due_date.id_for_label }}">Due Date:</label>
+                            <div class="control">
+                                {{ form.due_date }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.project.id_for_label }}">Project:</label>
+                            <div class="control">
+                                {{ form.project }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.assignee.id_for_label }}">Assignee:</label>
+                            <div class="control">
+                                {{ form.assignee }}
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped mt-5">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">Create</button>
+                            </div>
+                            <div class="control">
+                                <a class="button is-link is-light" onclick="window.history.back();" type="button">Cancel</a>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-
-                <div class="field">
-                    <label class="label" for="{{ form.start_date.id_for_label }}">Start Date:</label>
-                    <div class="control">
-                        {{ form.start_date }}
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label" for="{{ form.due_date.id_for_label }}">Due Date:</label>
-                    <div class="control">
-                        {{ form.due_date }}
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label" for="{{ form.project.id_for_label }}">Project:</label>
-                    <div class="control">
-                        {{ form.project }}
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label" for="{{ form.assignee.id_for_label }}">Assignee:</label>
-                    <div class="control">
-                        {{ form.assignee }}
-                    </div>
-                </div>
-
-                <div class="field is-grouped mt-5">
-                    <div class="control">
-                        <button class="button is-primary" type="submit">Create</button>
-                    </div>
-                    <div class="control">
-                        <a class="button is-link is-light" onclick="window.history.back();" type="button">Cancel</a>
-                    </div>
-                </div>
-
-            </form>
+            </div>
         </div>
     </div>
 {% endblock content %}
