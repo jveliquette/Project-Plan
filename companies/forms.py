@@ -11,7 +11,7 @@ class CompanyForm(ModelForm):
             "website",
         ]
         widgets = {
-            "name": forms.TextInput(attrs={"class": "input", "placeholder": "Enter company name..."}),
+            "name": forms.TextInput(attrs={"class": "input", "placeholder": "Enter company's name..."}),
             "address": forms.TextInput(attrs={"class": "input", "placeholder": "Enter company's physical address..."}),
             "website": forms.TextInput(attrs={"class": "input", "placeholder": "Enter company's website..."}),
         }
