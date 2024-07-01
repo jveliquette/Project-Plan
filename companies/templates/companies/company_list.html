@@ -6,38 +6,40 @@
     <div class="box">
         <h1 class="title">Company List</h1>
         <p class="mb-4"><a class="button is-primary" href="{% url 'add_company' %}">Add new company</a></p>
-        <table class="table is-fullwidth is-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Website</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for company in companies %}
+        <div class="table-container">
+            <table class="table is-fullwidth is-striped">
+                <thead>
                     <tr>
-                        <td><a class="link" href="{% url 'edit_company' company.id %}">{{ company.name }}</a></td>
-                        <td><p class="has-text-primary-00">{{ company.address }}</p></td>
-                    {% if company.website %}
-                        <td><a class="link" href="{{ company.website }}" target="_blank">{{ company.website }}</a></td>
-                    {% else %}
-                        <td>None</td>
-                    {% endif %}
-                        <td>
-                            <div class="buttons">
-                                <a class="button is-danger is-small" href="{% url 'delete_company' company.id %}">
-                                    <span>Delete</span>
-                                    <span class="icon">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </td>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Website</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for company in companies %}
+                        <tr>
+                            <td><a class="link" href="{% url 'edit_company' company.id %}">{{ company.name }}</a></td>
+                            <td><p class="has-text-primary-00">{{ company.address }}</p></td>
+                        {% if company.website %}
+                            <td><a class="link" href="{{ company.website }}" target="_blank">{{ company.website }}</a></td>
+                        {% else %}
+                            <td>None</td>
+                        {% endif %}
+                            <td>
+                                <div class="buttons">
+                                    <a class="button is-danger is-small" href="{% url 'delete_company' company.id %}">
+                                        <span>Delete</span>
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock content %}

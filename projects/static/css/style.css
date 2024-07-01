@@ -1,5 +1,12 @@
+/* General */
+
 @import url("https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css");
 
+html {
+    height: 100% !important;
+    margin: 0 !important;
+    background-color: #16181D !important;
+}
 
 body {
   background-color: #13151A;
@@ -7,6 +14,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+
+/* Navbar */
 
 .navbar-logo {
     max-width: 200px;
@@ -22,24 +32,56 @@ body {
   background-color: #13151A !important;
 }
 
+#navMenu {
+    background-color: #16181D !important;
+}
+
+#navMenu .navbar-item {
+    color: white !important;
+}
+
+.greeting {
+    display: flex;
+    justify-content: right;
+    margin-right: 1.5rem;
+    color: white;
+}
+
+
+/* Main */
+
+.box {
+    background-color: #24292E !important;
+}
+
+.button {
+    color: black !important;
+}
+
+.box .content, strong, .box p, .title, a.button.is-danger.is-small {
+    color: white !important;
+}
+
+.task-detail-list p, .box p.content, .task-detail-list p.mb-2, .field.is-grouped p {
+    color: rgb(215, 215, 215) !important;
+}
+
+
+/* Footer */
+
 .footer {
-  background-color: #16181D !important;
-  color: white !important;
-  margin-top: auto !important;
-  padding: 1rem !important;
+    background-color: #16181D !important;
+    color: white !important;
+    margin-top: auto !important;
+    padding: 1rem !important;
 }
 
 .footer-logo img {
     max-height: 50px;
 }
 
-.box {
-    background-color: #24292E !important;
-}
 
-.title {
-    color: white !important;
-}
+/* Tables and Forms */
 
 table, table th, table tr, table td {
     background-color: #24292E !important;
@@ -54,14 +96,7 @@ form .field .label {
     color: white;
 }
 
-input,
-input[type="input"],
-input[type="datetime-local"],
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-select {
+input, input[type="input"], input[type="datetime-local"], input[type="text"], input[type="email"], input[type="password"], textarea, select {
     background-color: #1a1a1a !important;
     border: 1px solid #4a4a4a !important;
     color: #ffffff !important;
@@ -69,73 +104,17 @@ select {
     transition: border-color 200ms ease-in, background-color 200mss ease-in !important;
 }
 
-input[type="input"]:focus,
-input[type="datetime-local"]:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-select:focus {
+input, input[type="input"]:focus, input[type="datetime-local"]:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
     outline: none;
     border-color: #00D1B2 !important;
     background-color: #13151A;
 }
 
-input[type="input"]:hover,
-input[type="datetime-local"]:hover,
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="password"]:hover,
-textarea:hover,
-select:hover {
+input, input[type="input"]:hover, input[type="datetime-local"]:hover, input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, textarea:hover, select:hover {
     border-color: #00D1B2 !important;
 }
 
 .textarea {
-    color: white !important;
-}
-
-/* Autofill */
-/* Webkit */
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-    -webkit-text-fill-color: #ffffff !important;
-    -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
-    transition: background-color 200ms ease-in;
-}
-
-/* Mozilla */
-input:-moz-autofill,
-textarea:-moz-autofill,
-select:-moz-autofill {
-    -moz-text-fill-color: #ffffff !important;
-    -moz-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
-    transition: background-color 200ms ease-in;
-}
-
-::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    color: #999999 !important; /* Change this to your desired color */
-}
-::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #999999 !important; /* Change this to your desired color */
-}
-:-ms-input-placeholder {
-    /* IE 10+ */
-    color: #999999 !important; /* Change this to your desired color */
-}
-:-moz-placeholder {
-    /* Firefox 18- */
-    color: #999999 !important; /* Change this to your desired color */
-}
-
-.button {
-    color: black !important;
-}
-
-.box .content, strong {
     color: white !important;
 }
 
@@ -150,18 +129,65 @@ table td .link:hover, .content a.has-text-primary:hover {
 
 }
 
-.task-detail-list p, .box p.content, .task-detail-list p.mb-2 {
-    color: rgb(215, 215, 215) !important;
+
+/* Autofill */
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+    transition: background-color 200ms ease-in;
 }
 
-.box p {
-    color: white !important;
+/* Autofill Firefox */
+input:-moz-autofill, textarea:-moz-autofill, select:-moz-autofill {
+    -moz-text-fill-color: #ffffff !important;
+    -moz-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+    transition: background-color 200ms ease-in;
 }
 
-.field.is-grouped p {
-    color: rgb(215, 215, 215) !important;
+
+/* Placeholder Styling */
+
+/* Safari and Chrome */
+::-webkit-input-placeholder {
+    color: #999999 !important;
+}
+/* Internet Explorer */
+:-ms-input-placeholder {
+    color: #999999 !important;
 }
 
-a.button.is-danger.is-small {
-    color: white !important;
+/* Firefox */
+::-moz-placeholder {
+    color: #999999 !important;
+}
+:-moz-placeholder {
+    color: #999999 !important;
+}
+
+
+/* Scroll bar styling (tables) */
+
+.table-container {
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.table {
+    width: 100%;
+    min-width: 600px;
+}
+
+.table-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }

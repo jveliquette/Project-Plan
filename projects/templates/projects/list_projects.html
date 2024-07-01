@@ -13,33 +13,35 @@
         {% if project_list|length == 0 %}
             <p>You are not assigned to any projects</p>
         {% else %}
-            <table class="table is-fullwidth is-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number of tasks</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for project in project_list %}
+            <div class="table-container">
+                <table class="table is-fullwidth is-striped">
+                    <thead>
                         <tr>
-                            <td><a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
-                            <td><p class="has-text-primary-00">{{ project.tasks.all|length }}</p></td>
-                            <td>
-                                <div class="buttons">
-                                    <a class="button is-danger is-small" href="{% url 'delete_project' project.id %}">
-                                        <span>Delete</span>
-                                        <span class="icon">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </td>
+                            <th>Name</th>
+                            <th>Number of tasks</th>
+                            <th>Actions</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for project in project_list %}
+                            <tr>
+                                <td><a class="link" href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
+                                <td><p class="has-text-primary-00">{{ project.tasks.all|length }}</p></td>
+                                <td>
+                                    <div class="buttons">
+                                        <a class="button is-danger is-small" href="{% url 'delete_project' project.id %}">
+                                            <span>Delete</span>
+                                            <span class="icon">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% endif %}
     </div>
 {% endblock content %}

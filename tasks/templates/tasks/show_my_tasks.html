@@ -10,37 +10,39 @@
         {% if my_tasks|length == 0 %}
             <p>You have no tasks</p>
         {% else %}
-            <table class="table is-fullwidth is-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Start date</th>
-                        <th>Due date</th>
-                        <th>Is completed</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for task in my_tasks %}
+            <div class="table-container">
+                <table class="table is-fullwidth is-striped">
+                    <thead>
                         <tr>
-                            <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
-                            <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
-                            <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
-                            <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>
-                            <td>
-                                <div class="buttons">
-                                    <a class="button is-danger is-small" href="{% url 'delete_task' task.id %}">
-                                        <span>Delete</span>
-                                        <span class="icon">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </td>
+                            <th>Name</th>
+                            <th>Start date</th>
+                            <th>Due date</th>
+                            <th>Is completed</th>
+                            <th>Actions</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for task in my_tasks %}
+                            <tr>
+                                <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
+                                <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
+                                <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
+                                <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>
+                                <td>
+                                    <div class="buttons">
+                                        <a class="button is-danger is-small" href="{% url 'delete_task' task.id %}">
+                                            <span>Delete</span>
+                                            <span class="icon">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% endif %}
     </div>
 {% endblock content %}
