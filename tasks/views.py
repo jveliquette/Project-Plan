@@ -33,8 +33,10 @@ def show_my_tasks(request):
 @login_required
 def task_detail(request, task_id):
     task = get_object_or_404(Task, id=task_id)
+    project = task.project
     context = {
-        "task": task
+        "task": task,
+        "project": project,
     }
     return render(request, "tasks/task_detail.html", context)
 

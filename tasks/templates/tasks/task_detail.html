@@ -8,6 +8,7 @@
             <div class="box">
                 <h1 class="title">Task: {{ task.name }}</h1>
                 <div class="task-detail-list">
+                    <p class="mb-2"><strong><em>Project:</em></strong> {{ project.name }}</p>
                     <p class="mb-2"><strong><em>Start Date:</em></strong> {{ task.start_date }}</p>
                     <p class="mb-2"><strong><em>Due Date:</em></strong> {{ task.due_date }}</p>
                     <p class="mb-2"><strong><em>Is Completed:</em></strong> {{ task.is_completed|yesno }}</p>

@@ -9,8 +9,13 @@
         <p class="content"><strong>Company:</strong> {{ project.company|default:"Not specified" }}</p>
         <p class="content"><strong>Description:</strong> {{ project.description }}</p>
         <h2 class="subtitle has-text-black"><strong>Tasks</strong></h2>
-        <div class="buttons">
-            <a class="button is-primary" href="{% url 'create_task' %}">Create a new task</a></p>
+        <div class="field is-grouped mt-5">
+            <div class="control">
+                <a class="button is-primary" href="{% url 'edit_project' project.id %}">Edit Project</a>
+            </div>
+            <div class="control">
+                <a class="button is-link" href="{% url 'create_task' %}">Create a new task</a>
+            </div>
         </div>
         {% if tasks|length == 0 %}
             <p>This project has no tasks</p>
