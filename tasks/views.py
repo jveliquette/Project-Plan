@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from tasks.forms import CreateTaskForm, TaskNotesForm, EditTaskForm
-from tasks.models import Task, TaskChart
+from tasks.models import Task
 import pandas as pd
 from plotly.offline import plot
 import plotly.express as px
