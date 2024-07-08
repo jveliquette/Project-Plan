@@ -4,7 +4,6 @@ from django import forms
 
 
 class CreateTaskForm(ModelForm):
-
     class Meta:
         model = Task
         fields = [

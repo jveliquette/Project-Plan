@@ -113,8 +113,8 @@ def show_task_chart(request):
         fig.update_layout(
             xaxis_title="Date",
             yaxis_title="Project - Task",
-            plot_bgcolor='rgba(0,0,0,0)',  # transparent background
-            paper_bgcolor='rgba(0,0,0,0)',  # transparent background
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
             font=dict(color="white"),
             legend=dict(
                 title="Responsible",

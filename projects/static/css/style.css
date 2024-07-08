@@ -202,7 +202,7 @@ input:-moz-autofill, textarea:-moz-autofill, select:-moz-autofill {
 
 #timeline-container .plotly-graph-div {
     display: inline-block;
-    min-width: 600px; /* Adjust this width based on your graph's typical size */
+    min-width: 600px;
 }
 
 /* Scroll bar styling (chart) */

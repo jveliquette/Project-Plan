@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from projects.models import Project
 
 # Create your models here.
-
 class Task(models.Model):
     name = models.CharField(max_length=200)
     start_date = models.DateTimeField()
@@ -43,7 +42,6 @@ class TaskChart(models.Model):
             null=True,
         )
 
-    # String representation method
     def __str__(self):
         return self.name
 
