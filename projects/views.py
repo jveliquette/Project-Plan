@@ -49,7 +49,7 @@ def edit_project(request, id):
         form = EditProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('show_project', id=project.id)  # Redirect to the project's detail view
+            return redirect('show_project', id=project.id)
     else:
         form = EditProjectForm(instance=project)
     context = {

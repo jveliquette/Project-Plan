@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Task Chart - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="box">
+        <h1 class="title">Task Chart<h1>
+        <div id="timeline-container">
+            {{ plot_div|safe }}
+        </div>
+    </div>
+{% endblock content %}

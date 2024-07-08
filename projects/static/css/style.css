@@ -191,3 +191,31 @@ input:-moz-autofill, textarea:-moz-autofill, select:-moz-autofill {
 .table-container::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+
+/* Chart styling */
+
+#timeline-container {
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+#timeline-container .plotly-graph-div {
+    display: inline-block;
+    min-width: 600px; /* Adjust this width based on your graph's typical size */
+}
+
+/* Scroll bar styling (chart) */
+
+#timeline-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+#timeline-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+#timeline-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
