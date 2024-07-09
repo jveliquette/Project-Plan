@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from tasks.forms import CreateTaskForm, TaskNotesForm, EditTaskForm
 from tasks.models import Task
+from projects.models import Project
 import pandas as pd
 from plotly.offline import plot
 import plotly.express as px
@@ -26,7 +27,7 @@ def create_task(request):
 
 @login_required
 def show_my_tasks(request):
-    tasks = Task.objects.filter(assignee=request.user)
+    tasks = Task.objects.all()
     context = {
         "my_tasks": tasks,
     }
@@ -46,7 +47,7 @@ def task_detail(request, task_id):
 
 @login_required
 def add_notes(request, task_id):
-    task = get_object_or_404(Task, id=task_id, assignee=request.user)
+    task = get_object_or_404(Task, id=task_id)
     if request.method == "POST":
         form = TaskNotesForm(request.POST, instance=task)
         if form.is_valid():
@@ -62,7 +63,7 @@ def add_notes(request, task_id):
 
 @login_required
 def edit_task(request, task_id):
-    task = get_object_or_404(Task, id=task_id, assignee=request.user)
+    task = get_object_or_404(Task, id=task_id)
     if request.method == "POST":
         form = EditTaskForm(request.POST, instance=task)
         if form.is_valid():
@@ -89,15 +90,15 @@ def delete_task(request, task_id):
     return render(request, "tasks/delete_task.html", context)
 
 
+@login_required
 def show_task_chart(request):
-    tasks = Task.objects.filter(assignee=request.user)
+    tasks = Task.objects.all()
 
     projects_data = [
         {
             "Project": f"{task.project.name} - {task.name}",
             "Start": task.start_date,
             "Finish": task.due_date,
-            "Responsible": task.assignee.username if task.assignee else "Unassigned",
         }
         for task in tasks
     ]
@@ -106,7 +107,7 @@ def show_task_chart(request):
 
     if not df.empty:
         fig = px.timeline(
-            df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
+            df, x_start="Start", x_end="Finish", y="Project"
         )
         fig.update_yaxes(autorange="reversed")
 

@@ -15,17 +15,15 @@
                     <p class="mb-2"><strong><em>Notes:</em></strong> {{ task.notes }}</p>
                 </div>
                 <div class="field is-grouped mt-5">
-                    {% if task.assignee == user %}
-                        <div class="control">
-                            <a class="button is-primary" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
-                        </div>
-                        <div class="control">
-                            <a class="button is-link" href="{% url 'edit_task' task.id %}">Edit Task</a></p>
-                        </div>
-                    {% else %}
-                        <p>{{ task.name }} is assigned to {{ task.assignee }}. <br> You do not have authorization to edit or add notes to this task.</p>
-
-                    {% endif %}
+                    <div class="control">
+                        <a class="button is-primary" href="{% url 'add_notes' task.id %}">Add Notes</a></p>
+                    </div>
+                    <div class="control">
+                        <a class="button is-link" href="{% url 'edit_task' task.id %}">Edit Task</a></p>
+                    </div>
+                    <div class="control">
+                        <a class="button is-link is-light" href="{% url 'show_my_tasks' %}">Back</a></p>
+                    </div>
                 </div>
             </div>
         </div>

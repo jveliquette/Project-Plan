@@ -9,12 +9,10 @@ class CreateProjectForm(ModelForm):
         fields = [
             "name",
             "description",
-            "owner",
         ]
         widgets = {
             "name": forms.TextInput(attrs={"class": "input", "placeholder": "Enter project name..."}),
             "description": forms.Textarea(attrs={"class": "textarea", "placeholder": "Enter project description..."}),
-            "owner": forms.HiddenInput(),
         }
 
 

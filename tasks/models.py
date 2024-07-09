@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from projects.models import Project
 
 # Create your models here.
@@ -12,12 +11,6 @@ class Task(models.Model):
         Project,
         related_name="tasks",
         on_delete=models.CASCADE,
-    )
-    assignee = models.ForeignKey(
-        User,
-        related_name="tasks",
-        on_delete=models.CASCADE,
-        null=True,
     )
     notes = models.TextField(blank=True, null=True)
 

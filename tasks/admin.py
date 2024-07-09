@@ -12,5 +12,4 @@ class TaskAdmin(admin.ModelAdmin):
         "due_date",
         "is_completed",
         "project",
-        "assignee",
     ]

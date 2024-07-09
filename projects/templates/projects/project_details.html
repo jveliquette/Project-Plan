@@ -6,7 +6,6 @@
 {% block content %}
     <div class="box">
         <h1 class="title">{{ project.name }}</h1>
-        <p class="content"><strong>Company:</strong> {{ project.company|default:"Not specified" }}</p>
         <p class="content"><strong>Description:</strong> {{ project.description }}</p>
         <h2 class="subtitle has-text-black"><strong>Tasks</strong></h2>
         <div class="field is-grouped mt-5">
@@ -25,7 +24,6 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Assignee</th>
                             <th>Start date</th>
                             <th>Due date</th>
                             <th>Is completed</th>
@@ -36,7 +34,6 @@
                         {% for task in tasks %}
                             <tr>
                                 <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
-                                <td><p class="has-text-primary-00">{{ task.assignee }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>

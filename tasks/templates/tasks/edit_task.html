@@ -40,9 +40,11 @@
                         </div>
 
                         <div class="field">
-                            <label class="label" for="{{ form.assignee.id_for_label }}">Assignee:</label>
+                            <label class="label">Owner:</label>
                             <div class="control">
-                                {{ form.assignee }}
+                                <p class="has-text-white">
+                                    {{ user }}
+                                </p>
                             </div>
                         </div>
 

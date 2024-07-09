@@ -11,14 +11,12 @@ class CreateTaskForm(ModelForm):
             "start_date",
             "due_date",
             "project",
-            "assignee",
         ]
         widgets = {
             "name": forms.TextInput(attrs={"type": "input", "placeholder": "Enter task name..."}),
             "start_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "due_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "project": forms.Select(attrs={"class": "select"}),
-            "assignee": forms.Select(attrs={"class": "select"}),
         }
 
 class TaskNotesForm(ModelForm):
@@ -39,7 +37,6 @@ class EditTaskForm(ModelForm):
             "start_date",
             "due_date",
             "project",
-            "assignee",
             "is_completed",
         ]
         widgets = {
@@ -47,5 +44,4 @@ class EditTaskForm(ModelForm):
             "start_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "due_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "project": forms.Select(attrs={"class": "select"}),
-            "assignee": forms.Select(attrs={"class": "select"}),
         }
