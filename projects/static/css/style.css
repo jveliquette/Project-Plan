@@ -219,3 +219,9 @@ input:-moz-autofill, textarea:-moz-autofill, select:-moz-autofill {
 #timeline-container::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+
+
+.help.is-danger {
+    color: #00D1B2 !important; /* Red color for the error message */
+    font-size: 0.9rem; /* Adjust font size */
+}

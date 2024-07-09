@@ -9,6 +9,7 @@ def user_login(request):
     if request.method == "POST":
         form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
+            # Authentication successful - login
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
 

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Signup - Project Plan{% endblock title %}
+{% block title %}Sign Up - Project Plan{% endblock title %}
 
 {% block content %}
     <div class="columns is-centered">
         <div class="column is-half">
             <div class="box">
-                <h1 class="title">Signup</h1>
+                <h1 class="title">Sign Up</h1>
                 <div class="signup-form">
                     <form method="POST">
                         {% csrf_token %}
@@ -16,6 +16,13 @@
                             <div class="control">
                                 {{ form.username }}
                             </div>
+                            {% if form.username.errors %}
+                                <p class="help is-danger">
+                                    {% for error in form.username.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
                         </div>
 
                         <div class="field">
@@ -34,7 +41,7 @@
 
                         <div class="field is-grouped mt-5">
                             <div class="control">
-                                <button class="button is-primary" type="submit">Signup</button>
+                                <button class="button is-primary" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </form>
