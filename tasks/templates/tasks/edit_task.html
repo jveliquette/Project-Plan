@@ -40,19 +40,17 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Owner:</label>
-                            <div class="control">
+                            <label>
                                 <p class="has-text-white">
-                                    {{ user }}
+                                    <strong>Owner:</strong> {{ user }}
                                 </p>
-                            </div>
+                            </label>
                         </div>
 
                         <div class="field">
-                            <label class="label" for="{{ form.is_completed.id_for_label }}">Is Completed:</label>
-                            <div class="control">
-                                {{ form.is_completed }}
-                            </div>
+                            <label class="checkbox has-text-white">
+                                <strong>Completed: </strong> {{ form.is_completed }}
+                            </label>
                         </div>
 
                         <div class="field is-grouped mt-5">

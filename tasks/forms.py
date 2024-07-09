@@ -44,4 +44,5 @@ class EditTaskForm(ModelForm):
             "start_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "due_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "project": forms.Select(attrs={"class": "select"}),
+            "is_completed": forms.CheckboxInput(attrs={"class": "checkbox", "style": "color: red;"})
         }
