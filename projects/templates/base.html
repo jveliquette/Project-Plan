@@ -35,7 +35,6 @@
                             {% if user.is_authenticated %}
                                 <a class="navbar-item" href="{% url 'show_my_tasks' %}">My tasks</a>
                                 <a class="navbar-item" href="{% url 'list_projects' %}">My projects</a>
-                                <a class="navbar-item" href="{% url 'company_list' %}">Companies</a>
                                 <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
                             {% else %}
                                 <a class="navbar-item" href="{% url 'login' %}">Login</a>

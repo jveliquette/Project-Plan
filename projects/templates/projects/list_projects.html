@@ -7,11 +7,10 @@
     <div class="box">
         <h1 class="title">My Projects</h1>
         <div class="buttons">
-            <a class="button is-primary" href="{% url 'search_projects' %}">Search for projects by company</a>
             <a class="button is-link" href="{% url 'create_project' %}">Create a new project</a>
         </div>
         {% if project_list|length == 0 %}
-            <p>You are not assigned to any projects</p>
+            <p>You have not created any projects</p>
         {% else %}
             <div class="table-container">
                 <table class="table is-fullwidth is-striped">

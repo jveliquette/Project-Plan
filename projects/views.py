@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from projects.models import Project
 from tasks.models import Task
-from projects.forms import CreateProjectForm, ProjectSearchForm, EditProjectForm
+from projects.forms import CreateProjectForm, EditProjectForm
 
 
 # Create your views here.
@@ -42,7 +42,7 @@ def create_project(request):
     }
     return render(request, "projects/create_project.html", context)
 
-
+@login_required
 def edit_project(request, id):
     project = get_object_or_404(Project, id=id)
     if request.method == "POST":
@@ -57,22 +57,6 @@ def edit_project(request, id):
         "project": project,
     }
     return render(request, 'projects/edit_project.html', context)
-
-
-
-def search_projects(request):
-    form = ProjectSearchForm()
-    projects = None
-    if "company" in request.GET:
-        form = ProjectSearchForm(request.GET)
-        if form.is_valid():
-            company = form.cleaned_data['company']
-            projects = Project.objects.filter(company=company)
-    context = {
-        "form": form,
-        "projects": projects,
-    }
-    return render(request, "projects/search_projects.html", context)
 
 
 @login_required
