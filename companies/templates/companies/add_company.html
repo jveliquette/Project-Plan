@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Add Company - Project Plan{% endblock title %}
+
+{% block content %}
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box">
+                <h1 class="title">Add Company</h1>
+                <div class="company-form">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label class="label" for="{{ form.name.id_for_label }}">Name:</label>
+                            <div class="control">
+                                {{ form.name }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.address.id_for_label }}">Address:</label>
+                            <div class="control">
+                                {{ form.address }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.website.id_for_label }}">Website:</label>
+                            <div class="control">
+                                {{ form.website }}
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped mt-5">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">Save Company</button>
+                            </div>
+                            <div class="control">
+                                <a class="button is-link" href="{% url 'company_list' %}" type="button">Cancel</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
