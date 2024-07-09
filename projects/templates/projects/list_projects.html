@@ -7,17 +7,17 @@
     <div class="box">
         <h1 class="title">My Projects</h1>
         <div class="buttons">
-            <a class="button is-link" href="{% url 'create_project' %}">Create a new project</a>
+            <a class="button is-link" href="{% url 'create_project' %}">Create a New Project</a>
         </div>
         {% if project_list|length == 0 %}
-            <p>You have not created any projects</p>
+            <p>You have not created any projects!</p>
         {% else %}
             <div class="table-container">
                 <table class="table is-fullwidth is-striped">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Number of tasks</th>
+                            <th>Number of Tasks</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

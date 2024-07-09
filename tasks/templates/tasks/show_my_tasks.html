@@ -5,19 +5,19 @@
     <div class="box">
         <h1 class="title">My Tasks</h1>
         <div class="buttons">
-            <a class="button is-primary" href="{% url 'create_task' %}">Create a new task</a>
+            <a class="button is-primary" href="{% url 'create_task' %}">Create a New Task</a>
         </div>
         {% if my_tasks|length == 0 %}
-            <p>You have no tasks</p>
+            <p>You have no tasks!</p>
         {% else %}
             <div class="table-container">
                 <table class="table is-fullwidth is-striped">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Start date</th>
-                            <th>Due date</th>
-                            <th>Is completed</th>
+                            <th>Start Date</th>
+                            <th>Due Date</th>
+                            <th>Is Completed</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
                 </table>
             </div>
             <div class="buttons">
-                <a class="button is-link" href="{% url 'show_task_chart' %}">View task chart</a>
+                <a class="button is-link" href="{% url 'show_task_chart' %}">View Task Chart</a>
             </div>
         {% endif %}
     </div>

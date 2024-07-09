@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -29,8 +28,3 @@ class SignUpForm(forms.Form):
             raise ValidationError("Passwords do not match!")
 
         return cleaned_data
-
-class CustomAuthenticationForm(AuthenticationForm):
-    error_messages = {
-        "invalid_login": "Unrecognized username and/or password!",
-    }

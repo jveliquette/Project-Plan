@@ -6,7 +6,7 @@
     <div class="columns is-centered">
         <div class="column is-half">
             <div class="box">
-                <h1 class="title">Edit Project: {{ project.name }}</h1>
+                <h1 class="title">Edit Project - {{ project.name }}</h1>
                 <div class="project-form">
                     <form method="POST">
                         {% csrf_token %}
@@ -41,8 +41,6 @@
                             </div>
                         </div>
 
-                    </form>
-                </div>
                     </form>
                 </div>
             </div>

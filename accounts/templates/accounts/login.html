@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Login - Project Plan{% endblock title %}
+{% block title %}Log In - Project Plan{% endblock title %}
 
 {% block content %}
     <div class="columns is-centered">
         <div class="column is-half">
             <div class="box">
-                <h1 class="title">Login</h1>
+                <h1 class="title">Log In</h1>
                 <div class="login-form">
                     <form method="POST">
                         {% csrf_token %}
@@ -25,19 +25,20 @@
                             </div>
                         </div>
 
+                        {% if form.non_field_errors %}
+                            <div class="has-text-primary">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
                         <div class="field is-grouped mt-5">
                             <div class="control">
-                                <button class="button is-primary" type="submit">Login</button>
+                                <button class="button is-primary" type="submit">Log In</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            {% if form.non_field_errors %}
-                <div class="has-text-primary">
-                    {{ form.non_field_errors }}
-                </div>
-            {% endif %}
         </div>
     </div>
 {% endblock content %}
