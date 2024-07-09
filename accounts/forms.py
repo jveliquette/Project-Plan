@@ -20,6 +20,15 @@ class SignUpForm(forms.Form):
             raise ValidationError("Username is already taken!")
         return username
 
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        password_confirmation = cleaned_data.get("password_confirmation")
+
+        if password and password_confirmation and password != password_confirmation:
+            raise ValidationError("Passwords do not match!")
+
+        return cleaned_data
 
 class CustomAuthenticationForm(AuthenticationForm):
     error_messages = {

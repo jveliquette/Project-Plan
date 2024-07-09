@@ -39,6 +39,14 @@
                             </div>
                         </div>
 
+                        {% if form.non_field_errors %}
+                            <p class="help is-danger">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+
                         <div class="field is-grouped mt-5">
                             <div class="control">
                                 <button class="button is-primary" type="submit">Sign Up</button>

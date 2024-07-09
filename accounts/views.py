@@ -40,15 +40,11 @@ def signup(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            password_confirmation = form.cleaned_data["password_confirmation"]
-            if password == password_confirmation:
-                # create new user with those values and save it to a variable
-                user = User.objects.create_user(username, password=password)
-                # login user that was just created
-                login(request, user)
-                return redirect("list_projects")
-            else:
-                form.add_error("password", "the passwords do not match")
+            # create new user with those values and save it to a variable
+            user = User.objects.create_user(username, password=password)
+            # login user that was just created
+            login(request, user)
+            return redirect("list_projects")
     else:
         form = SignUpForm()
     context = {
