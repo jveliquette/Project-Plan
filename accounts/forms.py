@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class LogInForm(forms.Form):
@@ -27,4 +28,9 @@ class SignUpForm(forms.Form):
         "username": forms.TextInput(attrs={"class": "input"}),
         "password": forms.PasswordInput(attrs={"class": "input"}),
         "password_confirmation": forms.PasswordInput(attrs={"class": "input"})
+    }
+
+class CustomAuthenticationForm(AuthenticationForm):
+    error_messages = {
+        "invalid_login": "Unrecognized username and/or password!",
     }

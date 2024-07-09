@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from accounts.forms import LogInForm, SignUpForm
+from accounts.forms import LogInForm, SignUpForm, CustomAuthenticationForm
 
 
 # Create your views here.
 def user_login(request):
     if request.method == "POST":
-        form = LogInForm(request.POST)
+        form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]

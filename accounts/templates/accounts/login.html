@@ -33,6 +33,11 @@
                     </form>
                 </div>
             </div>
+            {% if form.non_field_errors %}
+                <div class="has-text-primary">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}
