@@ -129,6 +129,15 @@ table td .link:hover, .content a.has-text-primary:hover {
 
 }
 
+table td .link-opposite {
+    color: #485FC7 !important;
+    transition: color 200ms ease-in !important;
+}
+
+table td .link-opposite:hover {
+    color: #00D1B2 !important;
+
+}
 
 /* Autofill */
 

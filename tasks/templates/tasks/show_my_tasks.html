@@ -15,6 +15,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Project</th>
                             <th>Start Date</th>
                             <th>Due Date</th>
                             <th>Is Completed</th>
@@ -25,6 +26,7 @@
                         {% for task in my_tasks %}
                             <tr>
                                 <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
+                                <td><a class="link-opposite" href="{% url 'show_project' task.project.id %}">{{ task.project }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>

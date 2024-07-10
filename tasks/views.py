@@ -6,6 +6,7 @@ from projects.models import Project
 import pandas as pd
 from plotly.offline import plot
 import plotly.express as px
+from plotly import graph_objs as go
 
 # Create your views here.
 
@@ -93,32 +94,58 @@ def delete_task(request, task_id):
 @login_required
 def show_task_chart(request):
     tasks = Task.objects.all()
-
-    projects_data = [
-        {
-            "Project": f"{task.project.name} - {task.name}",
+    projects_data = []
+    for task in tasks:
+        project_name = f"{task.project.name}"
+        projects_data.append({
+            "Task": task.name,
+            "Project": project_name,
             "Start": task.start_date,
             "Finish": task.due_date,
-        }
-        for task in tasks
-    ]
+            "Completed": task.is_completed,
+        })
 
     df = pd.DataFrame(projects_data)
-
     if not df.empty:
+        projects = Project.objects.all()
+        color_map = px.colors.qualitative.Dark24[:len(projects)]
+        project_color_map = {project.name: color_map[i % len(color_map)] for i, project in enumerate(projects)}
+        df["Color"] = df.apply(lambda row: "#FFFFFF" if row["Completed"] else project_color_map.get(row["Project"], "#FFFFFF"), axis=1)
+
         fig = px.timeline(
-            df, x_start="Start", x_end="Finish", y="Project"
+            df, x_start="Start", x_end="Finish", y="Task", color="Project",
+            labels={"Task": "Task", "Start": "Start Date", "Finish": "Due Date"},
+            color_discrete_map=project_color_map,
+            template="plotly_dark",
+            opacity=0.95,
         )
         fig.update_yaxes(autorange="reversed")
 
+        completed_tasks = df[df["Completed"]]
+        fig.add_trace(go.Scatter(
+            x=completed_tasks["Start"],
+            y=completed_tasks["Task"],
+            mode="markers",
+            marker=dict(symbol="square", size=10, color="#FFFFFF", line=dict(width=3, color="Black")),
+            showlegend=True,
+            name="Completed Tasks",
+            text="Completed",
+            hoverinfo="text",
+            opacity=0.8,
+            hoverlabel=dict(
+                bgcolor="white",
+                font=dict(color="black")
+            )
+        ))
+
         fig.update_layout(
             xaxis_title="Date",
-            yaxis_title="Project - Task",
+            yaxis_title="Task",
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
             font=dict(color="white"),
             legend=dict(
-                title="Responsible",
+                title="Project",
                 font=dict(
                     family="Roboto, sans-serif",
                     size=14,
@@ -130,7 +157,7 @@ def show_task_chart(request):
         fig.update_xaxes(showgrid=True, gridcolor='rgba(255,255,255,0.2)')
         fig.update_yaxes(showgrid=True, gridcolor='rgba(255,255,255,0.2)')
 
-        gantt_plot = plot(fig, output_type="div")
+        gantt_plot = fig.to_html(full_html=False, include_plotlyjs=False)
     else:
         gantt_plot = "No data available to display the chart."
 
