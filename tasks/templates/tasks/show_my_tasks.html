@@ -45,9 +45,12 @@
                     </tbody>
                 </table>
             </div>
-            <div class="buttons">
-                <a class="button is-link" href="{% url 'show_task_chart' %}">View Task Chart</a>
-            </div>
         {% endif %}
+    </div>
+    <div class="box">
+        <h1 class="title">Task Chart</h1>
+        <div id="timeline-container">
+            {{ plot_div|safe }}
+        </div>
     </div>
 {% endblock content %}
