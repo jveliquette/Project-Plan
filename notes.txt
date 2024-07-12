@@ -1,0 +1,1 @@
+fix the colors and their order in the chart
