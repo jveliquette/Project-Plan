@@ -1,1 +1,2 @@
 fix the colors and their order in the chart
+if i add a task to project 10 on julias account, it doesnt add it to the bottom (above unassigned)
