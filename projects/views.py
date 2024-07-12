@@ -8,7 +8,7 @@ from projects.forms import CreateProjectForm, EditProjectForm
 # Create your views here.
 @login_required
 def list_projects(request):
-    project_list = Project.objects.filter(owner=request.user)
+    project_list = Project.objects.filter(owner=request.user).exclude(name="Unassigned")
     context = {
         "project_list": project_list,
     }

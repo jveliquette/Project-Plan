@@ -24,6 +24,9 @@ class CreateTaskForm(ModelForm):
         super(CreateTaskForm, self).__init__(*args, **kwargs)
         if user:
             self.fields["project"].queryset = Project.objects.filter(owner=user)
+            unassigned_project = Project.objects.filter(owner=user, name="Unassigned").first()
+            if unassigned_project:
+                self.fields["project"].initial = unassigned_project.id
 
 class TaskNotesForm(ModelForm):
     class Meta:
@@ -57,3 +60,6 @@ class EditTaskForm(ModelForm):
         super(EditTaskForm, self).__init__(*args, **kwargs)
         if user:
             self.fields["project"].queryset = Project.objects.filter(owner=user)
+            unassigned_project = Project.objects.filter(owner=user, name="Unassigned").first()
+            if unassigned_project:
+                self.fields["project"].initial = unassigned_project.id

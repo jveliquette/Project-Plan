@@ -30,11 +30,8 @@ def create_task(request):
 
 @login_required
 def show_my_tasks(request):
-
     user = request.user
-
     tasks = Task.objects.filter(assigned_to=user)
-
     sort_by = request.GET.get('sort_by')
 
     if sort_by == 'project':
@@ -59,10 +56,15 @@ def show_my_tasks(request):
 
     df = pd.DataFrame(projects_data)
     if not df.empty:
-        projects = Project.objects.all()
+        projects = Project.objects.filter(tasks__in=tasks).distinct()
         color_map = px.colors.qualitative.Dark24[:len(projects)]
         project_color_map = {project.name: color_map[i % len(color_map)] for i, project in enumerate(projects)}
-        df["Color"] = df.apply(lambda row: "#FFFFFF" if row["Completed"] else project_color_map.get(row["Project"], "#FFFFFF"), axis=1)
+
+        unassigned_color ="#999999"
+        project_color_map["Unassigned"] = unassigned_color
+
+        df["Color"] = df.apply(lambda row: unassigned_color if row["Project"] == "Unassigned" else project_color_map.get(row["Project"], "#FFFFFF"), axis=1)
+
 
         fig = px.timeline(
             df, x_start="Start", x_end="Finish", y="Task", color="Project",
@@ -111,7 +113,7 @@ def show_my_tasks(request):
 
         gantt_plot = fig.to_html(full_html=False, include_plotlyjs=False)
     else:
-        gantt_plot = "No data available to display the chart."
+        gantt_plot = "<p style='color: white;'>No data available to display the chart!</p>"
 
     context = {
         "my_tasks": tasks,
