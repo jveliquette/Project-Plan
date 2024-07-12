@@ -29,6 +29,18 @@ def create_task(request):
 @login_required
 def show_my_tasks(request):
     tasks = Task.objects.all()
+
+    sort_by = request.GET.get('sort_by')
+
+    if sort_by == 'project':
+        tasks = tasks.order_by('project__name', 'name')
+    elif sort_by == 'start_date':
+        tasks = tasks.order_by('start_date')
+    elif sort_by == 'due_date':
+        tasks = tasks.order_by('due_date')
+    elif sort_by == 'completed':
+        tasks = tasks.order_by('is_completed')
+
     projects_data = []
     for task in tasks:
         project_name = f"{task.project.name}"

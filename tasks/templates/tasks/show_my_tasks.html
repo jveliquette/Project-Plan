@@ -5,7 +5,17 @@
     <div class="box">
         <h1 class="title">My Tasks</h1>
         <div class="buttons">
-            <a class="button is-primary" href="{% url 'create_task' %}">Create a New Task</a>
+            <a class="button is-primary mr-5" href="{% url 'create_task' %}">Create a New Task</a>
+        </div>
+        <div class="buttons">
+            <p class="mr-2">Filter by:</p>
+            <a href="?sort_by=project" class="link-opposite mr-2 ml-2">Project</a>
+            <span>|</span>
+            <a href="?sort_by=start_date" class="link-opposite mr-2 ml-2">Start Date</a>
+            <span>|</span>
+            <a href="?sort_by=due_date" class="link-opposite mr-2 ml-2">Due Date</a>
+            <span>|</span>
+            <a href="?sort_by=completed" class="link-opposite ml-2">Not Completed</a>
         </div>
         {% if my_tasks|length == 0 %}
             <p>You have no tasks!</p>
@@ -26,7 +36,7 @@
                         {% for task in my_tasks %}
                             <tr>
                                 <td><a class="link" href="{% url 'task_detail' task.id %}">{{ task.name }}</a></td>
-                                <td><a class="link-opposite" href="{% url 'show_project' task.project.id %}">{{ task.project }}</p></td>
+                                <td><a class="link" href="{% url 'show_project' task.project.id %}">{{ task.project }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.start_date }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.due_date }}</p></td>
                                 <td><p class="has-text-primary-00">{{ task.is_completed|yesno }}</p></td>
