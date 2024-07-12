@@ -32,8 +32,9 @@ def create_task(request):
 def show_my_tasks(request):
     user = request.user
     tasks = Task.objects.filter(assigned_to=user)
-    sort_by = request.GET.get('sort_by')
+    chart_tasks = tasks
 
+    sort_by = request.GET.get('sort_by')
     if sort_by == 'project':
         tasks = tasks.order_by('project__name', 'name')
     elif sort_by == 'start_date':
@@ -44,27 +45,29 @@ def show_my_tasks(request):
         tasks = tasks.order_by('is_completed')
 
     projects_data = []
-    for task in tasks:
-        project_name = f"{task.project.name}"
+    for task in chart_tasks:
+        project_name = task.project.name if task.project else "Unassigned"
         projects_data.append({
             "Task": task.name,
             "Project": project_name,
             "Start": task.start_date,
             "Finish": task.due_date,
             "Completed": task.is_completed,
+            "SortKey": 1 if project_name == "Unassigned" else 0,
         })
 
     df = pd.DataFrame(projects_data)
     if not df.empty:
-        projects = Project.objects.filter(tasks__in=tasks).distinct()
-        color_map = px.colors.qualitative.Dark24[:len(projects)]
-        project_color_map = {project.name: color_map[i % len(color_map)] for i, project in enumerate(projects)}
+        df = df.sort_values(by=["SortKey"])
 
+        projects = Project.objects.filter(tasks__in=chart_tasks).distinct()
+
+        colors = [ "#34a0a4", "#168aad", "#1a759f", "#1e6091", "#184e77", "#227eab", "#278aa7", "#46b8c1", "#7dceb3", "#aadbad", "#662829", "#763738", "#824445", "#985f5e", "#b28784", "#571963", "#7f408b", "#a967b4", "#d58fdf", "#ffbaff"]
         unassigned_color ="#999999"
+        project_color_map = {project.name: colors[i % len(colors)] for i, project in enumerate(projects)}
         project_color_map["Unassigned"] = unassigned_color
 
-        df["Color"] = df.apply(lambda row: unassigned_color if row["Project"] == "Unassigned" else project_color_map.get(row["Project"], "#FFFFFF"), axis=1)
-
+        df["Color"] = df["Project"].apply(lambda project: project_color_map.get(project, unassigned_color))
 
         fig = px.timeline(
             df, x_start="Start", x_end="Finish", y="Task", color="Project",

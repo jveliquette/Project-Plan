@@ -23,11 +23,16 @@ class CreateTaskForm(ModelForm):
         user = kwargs.pop("user", None)
         super(CreateTaskForm, self).__init__(*args, **kwargs)
         if user:
-            self.fields["project"].queryset = Project.objects.filter(owner=user)
-            unassigned_project = Project.objects.filter(owner=user, name="Unassigned").first()
+            projects = Project.objects.filter(owner=user).order_by("id")
+            unassigned_project = projects.filter(name="Unassigned").first()
+            if unassigned_project:
+                projects = projects.exclude(id=unassigned_project.id)
+            choices = [(project.id, project.name) for project in projects]
+            if unassigned_project:
+                choices.append((unassigned_project.id, unassigned_project.name))
+            self.fields["project"].choices = choices
             if unassigned_project:
                 self.fields["project"].initial = unassigned_project.id
-
 class TaskNotesForm(ModelForm):
     class Meta:
         model = Task
@@ -59,7 +64,13 @@ class EditTaskForm(ModelForm):
         user = kwargs.pop("user", None)
         super(EditTaskForm, self).__init__(*args, **kwargs)
         if user:
-            self.fields["project"].queryset = Project.objects.filter(owner=user)
-            unassigned_project = Project.objects.filter(owner=user, name="Unassigned").first()
+            projects = Project.objects.filter(owner=user).order_by('id')
+            unassigned_project = projects.filter(name="Unassigned").first()
             if unassigned_project:
-                self.fields["project"].initial = unassigned_project.id
+                projects = projects.exclude(id=unassigned_project.id)
+            choices = [(project.id, project.name) for project in projects]
+            if unassigned_project:
+                choices.append((unassigned_project.id, unassigned_project.name))
+                if len(choices) == 2:
+                    self.fields["project"].initial = unassigned_project.id
+            self.fields["project"].choices = choices
