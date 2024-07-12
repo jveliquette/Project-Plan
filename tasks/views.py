@@ -14,12 +14,14 @@ from plotly import graph_objs as go
 @login_required
 def create_task(request):
     if request.method == "POST":
-        form = CreateTaskForm(request.POST)
+        form = CreateTaskForm(request.POST, user=request.user)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)
+            task.assigned_to = request.user
+            task.save()
             return redirect("show_my_tasks")
     else:
-        form = CreateTaskForm()
+        form = CreateTaskForm(user=request.user)
     context = {
         "form": form,
     }
@@ -28,7 +30,10 @@ def create_task(request):
 
 @login_required
 def show_my_tasks(request):
-    tasks = Task.objects.all()
+
+    user = request.user
+
+    tasks = Task.objects.filter(assigned_to=user)
 
     sort_by = request.GET.get('sort_by')
 
@@ -144,14 +149,14 @@ def add_notes(request, task_id):
 
 @login_required
 def edit_task(request, task_id):
-    task = get_object_or_404(Task, id=task_id)
+    task = get_object_or_404(Task, id=task_id, assigned_to=request.user)
     if request.method == "POST":
-        form = EditTaskForm(request.POST, instance=task)
+        form = EditTaskForm(request.POST, instance=task, user=request.user)
         if form.is_valid():
             form.save()
             return redirect("task_detail", task_id=task.id)
     else:
-        form = EditTaskForm(instance=task)
+        form = EditTaskForm(instance=task, user=request.user)
     context = {
         "form": form,
         "task": task,

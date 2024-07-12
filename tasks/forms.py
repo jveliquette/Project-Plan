@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from tasks.models import Task
+from projects.models import Project
 from django import forms
 
 
@@ -18,6 +19,11 @@ class CreateTaskForm(ModelForm):
             "due_date": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "project": forms.Select(attrs={"class": "select"}),
         }
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop("user", None)
+        super(CreateTaskForm, self).__init__(*args, **kwargs)
+        if user:
+            self.fields["project"].queryset = Project.objects.filter(owner=user)
 
 class TaskNotesForm(ModelForm):
     class Meta:
@@ -46,3 +52,8 @@ class EditTaskForm(ModelForm):
             "project": forms.Select(attrs={"class": "select"}),
             "is_completed": forms.CheckboxInput(attrs={"class": "checkbox", "style": "color: red;"})
         }
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop("user", None)
+        super(EditTaskForm, self).__init__(*args, **kwargs)
+        if user:
+            self.fields["project"].queryset = Project.objects.filter(owner=user)
