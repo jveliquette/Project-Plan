@@ -1,1 +1,1 @@
-Run server with python manage.py runserver
+Run server with python manage.py runserver - update readme
