@@ -9,13 +9,13 @@
 ## Technologies Used
 
  - **Backend:** Python, Django, SQL
- - **Frontend:** JavaScript, Bulma
+ - **Frontend:** HTML templates, Bulma, JavaScript (for minimal UI interactions)
  - **Database:** SQLite
 
 ## Features
  - **Project and Task Management:** Create, edit, and delete projects and associated tasks.
  - **Task Due Date Chart:** Visual representation of upcoming due dates to prioritize and manage tasks effectively.
- - **Responsive User Interface:** Implemented using JavaScript and Bulma for a user-friendly experience on desktops, tablets, and mobile devices.
+ - **Responsive User Interface:** Built primarity using HTML templates and styled with Bulma. Javascript used minimally for UI interactions.
  - **Authentication:** User sign-up, login, and logout functionality.
 
 ## Setup and Installation
