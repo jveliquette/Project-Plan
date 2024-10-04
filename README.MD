@@ -1,6 +1,6 @@
 # Project Plan
 
-[Video Demo](https://youtu.be/Ms8fPiWZxlw)
+[Video Demo](https://youtu.be/8EbCA_uM2ik)
 
 ## Description
 
